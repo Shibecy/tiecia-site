@@ -1,0 +1,73 @@
+/* Mobile Fix - tiecia.com.br */
+@media (max-width: 767px) {
+
+  /* Forçar largura total e esconder overflow */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Containers Elementor */
+  .elementor-container,
+  .elementor-row,
+  .e-con,
+  .e-con-inner {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Colunas em mobile: largura total */
+  .elementor-column,
+  .elementor-col-100,
+  .elementor-col-50,
+  .elementor-col-33,
+  .elementor-col-25,
+  .elementor-col-66,
+  .elementor-col-75 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Seções */
+  .elementor-section,
+  .elementor-section-boxed > .elementor-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
+  /* Imagens */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Textos */
+  .elementor-widget-text-editor,
+  .elementor-widget-heading {
+    max-width: 100% !important;
+  }
+
+  /* Menu mobile */
+  .elementor-hidden-mobile {
+    display: none !important;
+  }
+
+  /* Esconder desktop nav, mostrar mobile */
+  .e-n-menu-layout-horizontal {
+    display: none !important;
+  }
+
+  /* Elementos com largura fixa */
+  [style*="width:"] {
+    max-width: 100% !important;
+  }
+
+  /* Flex items */
+  .elementor-widget-wrap {
+    width: 100% !important;
+  }
+}
