@@ -1,4 +1,22 @@
 /* Mobile Fix - tiecia.com.br */
+
+/* Corrigir animação de texto split (UICore) em todos os tamanhos */
+.ui-split-animate .ui-e-char,
+.ui-split-animate .ui-e-word,
+.ui-split-animate span,
+.ui-e--highlighted-text span,
+.ui-e-headline-text {
+  display: inline !important;
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  visibility: visible !important;
+}
+
+.ui-e--highlighted-text {
+  display: block !important;
+}
+
 @media (max-width: 767px) {
 
   /* Forçar largura total e esconder overflow */
