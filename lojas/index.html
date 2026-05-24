@@ -1,24 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17699470867"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17699470867');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17699470867"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17699470867');
+  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>TI&CIA | Encontre a loja mais perto de você</title>
   <meta name="description" content="Hub oficial das lojas TI&CIA: endereços, WhatsApp, rotas no GPS e avaliações do Google." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* =====================
-       Tipografia oficial
-       ===================== */
     @font-face {
       font-family: 'Aeonik';
       src: url('/fonts/Aeonik-Regular.woff2') format('woff2');
@@ -34,281 +29,232 @@
       src: url('/fonts/Pixelar.woff2') format('woff2');
       font-weight: 400; font-style: normal; font-display: swap;
     }
-
-    :root{
-      --primary-white:#FFFFFF;
-      --primary-black:#000000;
-      --secondary-mustard:#F3BD48;
-      --secondary-purple:#685BC7;
+    :root {
+      --mustard: #F3BD48;
+      --purple: #685BC7;
     }
-    body{font-family:'Aeonik',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-    .brand-accent{font-family:'Pixelar','Aeonik',sans-serif;}
-    .glass{backdrop-filter:blur(10px);background:rgba(255,255,255,.8);}
+    body { font-family: 'Aeonik', system-ui, -apple-system, Arial, sans-serif; }
+
+    .btn-whats  { background:#25D366; color:#fff; }
+    .btn-whats:hover { background:#1ebe5a; }
+    .btn-maps   { background:#000; color:#fff; }
+    .btn-maps:hover { background:#222; }
+    .btn-copy   { background:#f5f5f5; color:#111; border:1px solid #ddd; }
+    .btn-copy:hover { background:#e8e8e8; }
+
+    .card-accent-purple { border-top: 4px solid var(--purple); }
+    .card-accent-mustard { border-top: 4px solid var(--mustard); }
+    .card-accent-online  { border-top: 4px solid #111; }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #111 0%, #1a1a2e 60%, #16213e 100%);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .star { color: #FBBF24; }
   </style>
   <script>
-    function openMaps(address){
-      const q = encodeURIComponent(address);
-      window.location.href = `https://www.google.com/maps/search/?api=1&query=${q}`;
+    function openMaps(address) {
+      window.open('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address), '_blank');
     }
-    function copyText(text,el){
-      navigator.clipboard.writeText(text).then(()=>{
-        if(el){
-          const o=el.innerText; el.innerText='Copiado!';
-          setTimeout(()=>el.innerText=o,1200);
-        } else { alert('Copiado!'); }
+    function copyText(text, el) {
+      navigator.clipboard.writeText(text).then(() => {
+        if (el) { const o = el.innerText; el.innerText = 'Copiado!'; setTimeout(() => el.innerText = o, 1400); }
       });
     }
-    function sendWhatsApp(phone,msg='Olá,Quero compras na TI&CIA.'){
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-      window.location.href = url;
+    function sendWhatsApp(phone) {
+      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent('Olá, quero falar com a TI&CIA!'), '_blank');
     }
   </script>
-<link rel="stylesheet" href="/wp-content/mobile-fix.css">
 </head>
-<body class="bg-[var(--primary-white)] text-neutral-900">
-  <!-- Header -->
-  <header class="relative overflow-hidden border-b border-neutral-200">
-    <!-- Fundo cinza -->
-    <div class="absolute inset-0 -z-10 bg-neutral-100"></div>
+<body class="bg-[#f7f7f8] text-neutral-900">
 
-    <div class="max-w-6xl mx-auto px-4 py-6 sm:py-8 flex items-center justify-between gap-6">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <!-- Substituir pelo seu arquivo -->
-        <img src="http://tiecia.com.br/lojas/logo.png" alt="TI&CIA" class="h-10 w-auto">
-        <span class="sr-only">TI&CIA</span>
+  <!-- HEADER -->
+  <header class="hero-gradient text-white">
+    <div class="max-w-5xl mx-auto px-5 pt-8 pb-10">
+      <div class="flex items-center gap-3 mb-8">
+        <img src="logo.png" alt="TI&CIA" class="h-9 w-auto brightness-0 invert">
+        <span class="text-xs font-semibold tracking-widest uppercase text-white/50">Hub de Lojas</span>
       </div>
-      <div class="glass rounded-xl px-3 py-2 flex items-center gap-2 text-sm">
-        <span class="brand-accent text-neutral-800">Hub TI&CIA</span>
-        <span class="hidden sm:inline text-neutral-600">• Endereços, WhatsApp e rotas</span>
-      </div>
-    </div>
-
-    <div class="max-w-6xl mx-auto px-4 pb-6">
-      <h1 class="text-3xl sm:text-4xl font-bold text-neutral-900">Encontre a TI&CIA mais perto de você</h1>
+      <h1 class="text-3xl sm:text-5xl font-bold leading-tight mb-3">
+        Encontre a TI&CIA<br>mais perto de você
+      </h1>
+      <p class="text-white/60 text-base sm:text-lg max-w-xl">
+        Endereços, horários, WhatsApp e rotas para todas as nossas lojas físicas.
+      </p>
     </div>
   </header>
 
-  <!-- GRID DE LOJAS -->
-  <main class="max-w-6xl mx-auto px-4 py-10 grid md:grid-cols-3 gap-6">
-    <!-- Loja Macaé -->
-    <article class="rounded-2xl shadow-lg border border-neutral-200 overflow-hidden bg-white">
-      <div class="p-4 text-center bg-[var(--secondary-purple)]/10">
-        <h2 class="text-2xl font-bold text-[var(--secondary-purple)]">TI&CIA Macaé</h2>
-        <p class="text-xs text-neutral-600">Desde: 2013</p>
+  <!-- CARDS -->
+  <main class="max-w-5xl mx-auto px-5 py-10 grid md:grid-cols-3 gap-6">
 
-        <!-- Estrelas -->
-        <div class="flex items-center justify-center gap-2 mt-1" aria-label="Avaliação 5 de 5 no Google">
-          <div class="flex items-center text-yellow-400">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="text-sm font-semibold text-neutral-900">5,0</span>
-          <span class="text-xs text-neutral-600">• 55 avaliações no Google</span>
+    <!-- MACAÉ -->
+    <article class="card-accent-purple rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col">
+      <div class="grid grid-cols-3 gap-1">
+        <figure class="aspect-square overflow-hidden">
+          <img src="mc1.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="aspect-square overflow-hidden">
+          <img src="mc2.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="aspect-square overflow-hidden">
+          <img src="mc3.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+      </div>
+
+      <div class="p-5 flex flex-col flex-1">
+        <div class="mb-3">
+          <span class="tag bg-[var(--purple)]/10 text-[var(--purple)]">Macaé • desde 2013</span>
         </div>
-      </div>
+        <h2 class="text-xl font-bold mb-1">TI&CIA Macaé</h2>
 
-      <!-- Fotos -->
-      <div class="grid grid-cols-3 gap-2 p-2">
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/mc1.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/mc2.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/mc3.webp" alt="TI&CIA Macaé" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-      </div>
+        <div class="flex items-center gap-1 mb-3">
+          <span class="star text-sm">★★★★★</span>
+          <span class="text-sm font-semibold">5,0</span>
+          <span class="text-xs text-neutral-500">• 55 avaliações no Google</span>
+        </div>
 
-      <div class="p-5 text-sm">
-        <p>R. da Igualdade, 154 - casa 4 - Centro, Macaé - RJ, 27913-140</p>
-        <p> Horario de funcionamento: </p>
-        <p>Segunda a sexta - 8h às 18h | Sábados: 9h às 14h </p>
-        <div class="flex flex-wrap gap-2 pt-2">
-          <button onclick="sendWhatsApp('5522935007198')" class="px-4 py-2 rounded-xl bg-[var(--secondary-mustard)] text-black font-semibold">WhatsApp</button>
-          <button onclick="openMaps('R. da Igualdade, 154 - casa 4 - Centro, Macaé - RJ, 27913-140')" class="px-4 py-2 rounded-xl bg-black text-white font-semibold">Como chegar</button>
-          <button onclick="copyText('R. da Igualdade, 154 - casa 4 - Centro, Macaé - RJ, 27913-140', this)" class="px-4 py-2 rounded-xl border font-semibold">Copiar endereço</button>
+        <p class="text-sm text-neutral-600 mb-1">
+          R. Teixeira de Gouvéa, 572 - Centro, Macaé - RJ, 27910-110
+        </p>
+        <p class="text-xs text-neutral-500 mb-4">
+          Seg–Sex: 8h às 19h &nbsp;|&nbsp; Sáb: 9h às 14h
+        </p>
+
+        <div class="flex flex-col gap-2 mt-auto">
+          <button onclick="sendWhatsApp('5522935007198')" class="btn-whats w-full py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.854L.057 23.885a.5.5 0 0 0 .611.61l6.101-1.459A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.5-5.207-1.377l-.374-.214-3.878.927.964-3.785-.228-.368A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </button>
+          <div class="flex gap-2">
+            <button onclick="openMaps('R. Teixeira de Gouvéa, 572 - Centro, Macaé - RJ, 27910-110')" class="btn-maps flex-1 py-2 rounded-xl font-semibold text-sm">Como chegar</button>
+            <button onclick="copyText('R. Teixeira de Gouvéa, 572 - Centro, Macaé - RJ, 27910-110', this)" class="btn-copy flex-1 py-2 rounded-xl font-semibold text-sm">Copiar</button>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Loja Itaipu -->
-    <article class="rounded-2xl shadow-lg border border-neutral-200 overflow-hidden bg-white">
-      <div class="p-4 text-center bg-[var(--secondary-mustard)]/15">
-        <h2 class="text-2xl font-bold text-[var(--secondary-mustard)]">TI&CIA Itaipu</h2>
-        <p class="text-xs text-neutral-600">Desde: 2023</p>
+    <!-- ITAIPU -->
+    <article class="card-accent-mustard rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col">
+      <div class="grid grid-cols-3 gap-1">
+        <figure class="aspect-square overflow-hidden">
+          <img src="ita1.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="aspect-square overflow-hidden">
+          <img src="ita2.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+        <figure class="aspect-square overflow-hidden">
+          <img src="ita3.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy">
+        </figure>
+      </div>
 
-        <!-- Estrelas -->
-        <div class="flex items-center justify-center gap-2 mt-1" aria-label="Avaliação 5 de 5 no Google">
-          <div class="flex items-center text-yellow-400">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="text-sm font-semibold text-neutral-900">5,0</span>
-          <span class="text-xs text-neutral-600">• 175 avaliações no Google</span>
+      <div class="p-5 flex flex-col flex-1">
+        <div class="mb-3">
+          <span class="tag bg-[var(--mustard)]/15 text-amber-700">Itaipu • desde 2023</span>
         </div>
-      </div>
+        <h2 class="text-xl font-bold mb-1">TI&CIA Itaipu</h2>
 
-      <!-- Fotos -->
-      <div class="grid grid-cols-3 gap-2 p-2">
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/ita1.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/ita2.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/ita3.webp" alt="TI&CIA Itaipu" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-      </div>
+        <div class="flex items-center gap-1 mb-3">
+          <span class="star text-sm">★★★★★</span>
+          <span class="text-sm font-semibold">5,0</span>
+          <span class="text-xs text-neutral-500">• 175 avaliações no Google</span>
+        </div>
 
-      <div class="p-5 text-sm">
-        <p>Estr. Francisco da Cruz Nunes, 2505 - Loja nº 105 - Itaipu, Niterói - RJ, 24340-000</p>
-        <p>Telefone: (21) 93500-3483</p>
-        <p> Horario de funcionamento: </p>
-        <p>Segunda a sexta - 8h às 19h | Sábados: 9h às 14h </p>
-        <div class="flex flex-wrap gap-2 pt-2">
-          <button onclick="sendWhatsApp('5521935003483')" class="px-4 py-2 rounded-xl bg-[var(--secondary-mustard)] text-black font-semibold">WhatsApp</button>
-          <button onclick="openMaps('Estr. Francisco da Cruz Nunes, 2505 - Loja nº 105 - Itaipu, Niterói - RJ, 24340-000')" class="px-4 py-2 rounded-xl bg-black text-white font-semibold">Como chegar</button>
-          <button onclick="copyText('Estr. Francisco da Cruz Nunes, 2505 - Loja nº 105 - Itaipu, Niterói - RJ, 24340-000', this)" class="px-4 py-2 rounded-xl border font-semibold">Copiar endereço</button>
+        <p class="text-sm text-neutral-600 mb-1">
+          Estr. Francisco da Cruz Nunes, 2505 - Loja 105 - Itaipu, Niterói - RJ, 24340-000
+        </p>
+        <p class="text-xs text-neutral-500 mb-4">
+          Seg–Sex: 8h às 19h &nbsp;|&nbsp; Sáb: 9h às 14h
+        </p>
+
+        <div class="flex flex-col gap-2 mt-auto">
+          <button onclick="sendWhatsApp('5521935003483')" class="btn-whats w-full py-2.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.854L.057 23.885a.5.5 0 0 0 .611.61l6.101-1.459A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.667-.5-5.207-1.377l-.374-.214-3.878.927.964-3.785-.228-.368A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            WhatsApp
+          </button>
+          <div class="flex gap-2">
+            <button onclick="openMaps('Estr. Francisco da Cruz Nunes, 2505 - Loja 105 - Itaipu, Niterói - RJ, 24340-000')" class="btn-maps flex-1 py-2 rounded-xl font-semibold text-sm">Como chegar</button>
+            <button onclick="copyText('Estr. Francisco da Cruz Nunes, 2505 - Loja 105 - Itaipu, Niterói - RJ, 24340-000', this)" class="btn-copy flex-1 py-2 rounded-xl font-semibold text-sm">Copiar</button>
+          </div>
         </div>
       </div>
     </article>
 
-    <!-- Loja Rio -->
-    <article class="rounded-2xl shadow-lg border border-neutral-200 overflow-hidden bg-white">
-      <div class="p-4 text-center bg-black/5">
-        <h2 class="text-2xl font-bold text-black">TI&CIA Rio</h2>
-        <p class="text-xs text-neutral-600">Desde: 2024</p>
+    <!-- LOJA ONLINE -->
+    <article class="card-accent-online rounded-2xl bg-white shadow-sm overflow-hidden flex flex-col">
+      <div class="bg-neutral-900 flex items-center justify-center" style="height:120px">
+        <svg class="w-16 h-16 text-white/20" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"/>
+        </svg>
+      </div>
 
-        <!-- Estrelas -->
-        <div class="flex items-center justify-center gap-2 mt-1" aria-label="Avaliação 5 de 5 no Google">
-          <div class="flex items-center text-yellow-400">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="text-sm font-semibold text-neutral-900">5,0</span>
-          <span class="text-xs text-neutral-600">• 74 avaliações no Google</span>
+      <div class="p-5 flex flex-col flex-1">
+        <div class="mb-3">
+          <span class="tag bg-neutral-100 text-neutral-600">Loja Online</span>
         </div>
-      </div>
+        <h2 class="text-xl font-bold mb-1">TI&CIA Online</h2>
 
-      <!-- Fotos -->
-      <div class="grid grid-cols-3 gap-2 p-2">
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/rio1.webp" alt="TI&CIA Rio" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/rio2.webp" alt="TI&CIA Rio" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-        <figure class="aspect-square overflow-hidden rounded-md">
-          <img src="http://tiecia.com.br/lojas/rio3.webp" alt="TI&CIA Rio" class="w-full h-full object-cover" loading="lazy" decoding="async">
-        </figure>
-      </div>
+        <p class="text-sm text-neutral-600 mb-1">
+          Compre pelo nosso site e receba em todo o Brasil.
+        </p>
+        <p class="text-xs text-neutral-500 mb-4">
+          Também disponível no iFood, Kabum e Magalu.
+        </p>
 
-      <div class="p-5 text-sm">
-        <p>Av. Rio Branco, 156 - Loja 310 - Centro, Rio de Janeiro - RJ, 20040-003</p>
-        <p>Telefone: (21) 93500-1817</p>
-        <p> Horario de funcionamento: </p>
-        <p>Segunda a sexta - 8h às 19h | Sábados: 9h às 14h </p>
-        <div class="flex flex-wrap gap-2 pt-2">
-          <button onclick="sendWhatsApp('5521935001817')" class="px-4 py-2 rounded-xl bg-[var(--secondary-mustard)] text-black font-semibold">WhatsApp</button>
-          <button onclick="openMaps('Av. Rio Branco, 156 - Loja 310 - Centro, Rio de Janeiro - RJ, 20040-003')" class="px-4 py-2 rounded-xl bg-black text-white font-semibold">Como chegar</button>
-          <button onclick="copyText('Av. Rio Branco, 156 - Loja 310 - Centro, Rio de Janeiro - RJ, 20040-003', this)" class="px-4 py-2 rounded-xl border font-semibold">Copiar endereço</button>
+        <div class="flex flex-col gap-2 mt-auto">
+          <a href="https://loja.tiecia.com.br" target="_blank" class="w-full py-2.5 rounded-xl font-semibold text-sm text-center bg-neutral-900 text-white hover:bg-neutral-700 transition">
+            Acessar a loja online
+          </a>
+          <div class="flex items-center justify-center gap-4 pt-2">
+            <img src="ifood.png" alt="iFood" class="h-6 w-auto object-contain grayscale opacity-60">
+            <img src="kbum.png" alt="Kabum" class="h-6 w-auto object-contain grayscale opacity-60">
+            <img src="magalu.png" alt="Magalu" class="h-6 w-auto object-contain grayscale opacity-60">
+          </div>
         </div>
       </div>
     </article>
+
   </main>
 
-<!-- Comentários (grade responsiva 3x2 / 1x6 no mobile) -->
-<section class="max-w-6xl mx-auto px-4 mt-10">
-  <div class="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-    <h3 class="text-xl font-bold mb-1">O que dizem no Google</h3>
-    <p class="text-sm text-neutral-600 mb-6">
-      Alguns comentários reais dos nossos clientes:
-    </p>
-
-    <!-- Grade de prints -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c1.png"
-             alt="Comentário Google 1"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c2.png"
-             alt="Comentário Google 2"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c3.png"
-             alt="Comentário Google 3"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c4.png"
-             alt="Comentário Google 4"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c5.png"
-             alt="Comentário Google 5"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-
-      <figure class="rounded-xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-        <img src="http://tiecia.com.br/lojas/c6.png"
-             alt="Comentário Google 6"
-             class="w-full h-auto object-contain" loading="lazy" decoding="async">
-      </figure>
-    </div>
-
-  </div>
-</section>
-
-
-  <!-- Seção online -->
-  <section class="max-w-6xl mx-auto px-4 py-10 text-center border-t border-neutral-200 mt-10">
-    <h2 class="text-2xl font-bold mb-3">Para comprar online</h2>
-    <p class="text-neutral-700 mb-6">
-      Também estamos no <b>Ifood</b>, <b>Kabum</b> e <b>Magalu</b>
-    </p>
-
-    <div class="flex flex-wrap items-center justify-center gap-8">
-      <!-- LOGO IFOOD -->
-      <div class="h-10">
-        <img src="http://tiecia.com.br/lojas/ifood.png" alt="Ifood" class="h-full w-auto object-contain" loading="lazy">
-      </div>
-
-      <!-- LOGO KABUM -->
-      <div class="h-10">
-        <img src="http://tiecia.com.br/lojas/kbum.png" alt="Kabum" class="h-full w-auto object-contain" loading="lazy">
-      </div>
-
-      <!-- LOGO MAGALU -->
-      <div class="h-10">
-        <img src="http://tiecia.com.br/lojas/magalu.png" alt="Magalu" class="h-full w-auto object-contain" loading="lazy">
+  <!-- AVALIAÇÕES -->
+  <section class="max-w-5xl mx-auto px-5 mb-10">
+    <div class="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
+      <h3 class="text-xl font-bold mb-1">O que dizem no Google</h3>
+      <p class="text-sm text-neutral-500 mb-5">Alguns comentários reais dos nossos clientes:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c1.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c2.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c3.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c4.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c5.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
+        <figure class="rounded-xl overflow-hidden border border-neutral-100">
+          <img src="c6.png" alt="Avaliação Google" class="w-full h-auto object-contain" loading="lazy">
+        </figure>
       </div>
     </div>
   </section>
 
-  <footer class="mt-12 border-t border-neutral-200 py-6 text-center text-sm text-neutral-600">
+  <footer class="border-t border-neutral-200 py-6 text-center text-sm text-neutral-500">
     © <span id="year"></span> TI&CIA — Todos os direitos reservados.
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
